@@ -18,13 +18,13 @@ try:
     sent = []
     while True:
         ram = (psutil.virtual_memory().percent)
-        cpu = psutil.cpu_percent()
+        cpu_percent = psutil.cpu_percent()
         disco = psutil.disk_usage('/').percent
-        data_hora = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-        sent.append(float(f'{cpu:.2f}'))
+        data_medicao = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        sent.append(float(f'{cpu_percent:.2f}'))
         sent.append(float(f'{ram:.2f}'))
         sent.append(float(f'{disco:.2f}'))
-        print("mem_used:", float('{0:.2f}'.format(ram)), "| date:", data_hora)
+        print("mem_used:", float('{0:.2f}'.format(ram)), "|cpu:", float('{0:.2f}'.format(cpu_percent)) ,"| date:", data_medicao)
         flush(sent)
         sent = []
         time.sleep(2)
