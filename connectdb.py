@@ -1,13 +1,14 @@
 import mysql.connector
 from credentials import usr, pswd
 
-def insert_db(value1):
-    try:  
+
+def insert_db(value):
+    try:
         mydb = mysql.connector.connect(
-            host = "localhost",
-            user = usr,
-            password = pswd,
-            database = "safelog_analytics"
+            host="localhost",
+            user=usr,
+            password=pswd,
+            database="safelog_analytics"
         )
 
         if mydb.is_connected():
@@ -16,11 +17,8 @@ def insert_db(value1):
 
             mycursor = mydb.cursor()
 
-            sql_query = f"INSERT INTO analytics(cpu_percent, ram, disco, data_medicao) VALUES ({value1[0]}, {value1[1]}, {value1[2]}, now())"
-            val = [value1]
-            print(val, value1)
+            sql_query = f"INSERT INTO analytics(cpu_percent, ram, disco, data_medicao) VALUES ({value[0]}, {value[1]}, {value[2]}, now())"
             mycursor.execute(sql_query)
-
             mydb.commit()
 
             print(mycursor.rowcount, "registro inserido")
