@@ -17,7 +17,7 @@ def insert_db(value):
 
             mycursor = mydb.cursor()
 
-            sql_query = f"INSERT INTO analytics(cpu_percent, ram, disco, data_medicao) VALUES ({value[0]}, {value[1]}, {value[2]}, now())"
+            sql_query = f"INSERT INTO analytics(cpu, ram, disco, data_medicao) VALUES ({value[0]}, {value[1]}, {value[2]}, now())"
             mycursor.execute(sql_query)
             mydb.commit()
 
